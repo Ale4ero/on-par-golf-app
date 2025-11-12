@@ -10,18 +10,10 @@ export default function Home() {
             <span className="text-sage-700">Par</span>
           </h1>
           <p className="text-lg text-sage-800 max-w-md mx-auto leading-relaxed">
-            On Par is the place where sport, comfort and nature meet perfectly.
+            Replace paper scorecards with an intuitive digital experience.
           </p>
         </div>
 
-        <div className="mb-12">
-          <Link
-            href="/tournament/create"
-            className="inline-block bg-sage-900 hover:bg-sage-800 text-cream font-semibold py-3 px-8 rounded-full transition shadow-lg hover:shadow-xl"
-          >
-            Explore →
-          </Link>
-        </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <Link
