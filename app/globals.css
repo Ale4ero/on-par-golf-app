@@ -6,7 +6,7 @@
   --primary: #6b7e5a;
   --primary-dark: #4a5a3d;
   --accent: #c77d4d;
-  --cream: #fdfbf4;
+  --cream: #FFFDD0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,4 +63,18 @@ body {
 
 .bg-double-bogey {
   background-color: rgb(255 220 210);
+}
+
+/* Custom hover effect for create tournament button */
+.create-tournament-hover {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.create-tournament-hover:hover {
+  background-color: #FFFDD0 !important;
+  color: #1B4C1A !important;
+}
+
+.create-tournament-hover:hover .text-sage-700 {
+  color: #1B4C1A !important;
 }

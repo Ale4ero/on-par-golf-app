@@ -18,7 +18,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <Link
             href="/tournament/create"
-            className="bg-cream hover:bg-white text-sage-900 font-semibold py-8 px-8 rounded-2xl shadow-lg transition hover:shadow-xl border border-sage-200"
+            className="create-tournament-hover bg-cream text-sage-900 font-semibold py-8 px-8 rounded-2xl shadow-lg hover:shadow-xl border border-sage-200"
           >
             <div className="text-3xl mb-3">🏆</div>
             <div className="text-xl mb-2">Create Tournament</div>
