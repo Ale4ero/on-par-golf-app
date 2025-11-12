@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isTournamentHost(tournamentData) {
+      return isAuthenticated() && request.auth.uid == tournamentData.hostId;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId);
+      allow update, delete: if isOwner(userId);
+    }
+
+    // Tournaments collection
+    match /tournaments/{tournamentId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isTournamentHost(resource.data);
+    }
+
+    // Scores collection
+    match /scores/{scoreId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated();
+    }
+
+    // Courses collection
+    match /courses/{courseId} {
+      allow read: if true; // Public read access
+      allow write: if isAuthenticated();
+    }
+  }
+}
