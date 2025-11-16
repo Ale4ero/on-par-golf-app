@@ -111,7 +111,7 @@ export default function JoinTournamentPage() {
               onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
               required
               maxLength={6}
-              className="w-full px-4 py-3 text-2xl text-center font-bold border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 uppercase bg-white"
+              className="w-full px-4 py-3 text-2xl text-center font-bold border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 uppercase bg-white text-gray-900"
               placeholder="ABC123"
               autoFocus
             />

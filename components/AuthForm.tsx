@@ -72,7 +72,7 @@ export default function AuthForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+              className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
             />
           </div>
         )}
@@ -87,7 +87,7 @@ export default function AuthForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           />
         </div>
 
@@ -102,7 +102,7 @@ export default function AuthForm() {
             onChange={(e) => setPassword(e.target.value)}
             required
             minLength={6}
-            className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-3 py-2 border border-sage-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           />
         </div>
 

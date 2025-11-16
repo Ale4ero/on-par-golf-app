@@ -114,7 +114,7 @@ export default function TournamentForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
             placeholder="e.g., Spring Classic 2025"
           />
         </div>
@@ -129,7 +129,7 @@ export default function TournamentForm() {
             value={formData.courseId}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           >
             {mockCourses.map(course => (
               <option key={course.courseId} value={course.courseId}>
@@ -149,7 +149,7 @@ export default function TournamentForm() {
             value={formData.type}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           >
             <option value="stroke-play">Stroke Play (Individual)</option>
             <option value="match-play">Match Play (Head-to-Head)</option>
@@ -176,7 +176,7 @@ export default function TournamentForm() {
             value={formData.holes}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           >
             <option value={9}>9 Holes</option>
             <option value={18}>18 Holes</option>
@@ -194,7 +194,7 @@ export default function TournamentForm() {
             value={formData.startDate}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white"
+            className="w-full px-4 py-2 border border-sage-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-500 bg-white text-gray-900"
           />
         </div>
 
