@@ -50,7 +50,7 @@ export default function TournamentForm() {
         players: [{
           uid: user.uid,
           name: user.name,
-          handicap: user.handicap,
+          ...(user.handicap !== undefined && { handicap: user.handicap }),
           status: 'joined',
         }],
         startDate: new Date(formData.startDate),
@@ -77,7 +77,7 @@ export default function TournamentForm() {
 
   if (!user) {
     return (
-      <div className="max-w-2xl mx-auto bg-cream rounded-2xl shadow-lg p-8 border border-sage-200">
+      <div className="max-w-2xl mx-auto bg-cream rounded-2xl shadow-lg p-8 border border-sage-300">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-sage-900 mb-4">Sign In Required</h2>
           <p className="text-sage-700 mb-6">You must be signed in to create a tournament.</p>
@@ -93,7 +93,7 @@ export default function TournamentForm() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-cream rounded-2xl shadow-lg p-8 border border-sage-200">
+    <div className="max-w-2xl mx-auto bg-cream rounded-2xl shadow-lg p-8 border border-sage-300">
       <h2 className="text-3xl font-bold text-sage-900 mb-6">Create Tournament</h2>
 
       {error && (

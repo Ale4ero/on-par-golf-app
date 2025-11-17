@@ -49,7 +49,7 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-200">
+    <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-300">
       <h2 className="text-3xl font-bold text-center text-sage-900 mb-6">
         {mode === 'signin' ? 'Sign In' : 'Sign Up'}
       </h2>

@@ -70,10 +70,10 @@ export default function TournamentPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-olive-100 via-cream to-sage-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-sage-900 via-sage-800 to-olive-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-2xl font-bold text-sage-900 mb-2">Loading tournament...</div>
-          <div className="text-sage-700">Please wait</div>
+          <div className="text-2xl font-bold text-cream mb-2">Loading tournament...</div>
+          <div className="text-sage-300">Please wait</div>
         </div>
       </div>
     );
@@ -81,8 +81,8 @@ export default function TournamentPage() {
 
   if (!tournament) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-olive-100 via-cream to-sage-100 flex items-center justify-center p-4">
-        <div className="bg-cream rounded-2xl shadow-lg p-8 max-w-md text-center border border-sage-200">
+      <div className="min-h-screen bg-gradient-to-br from-sage-900 via-sage-800 to-olive-900 flex items-center justify-center p-4">
+        <div className="bg-cream rounded-2xl shadow-lg p-8 max-w-md text-center border border-sage-300">
           <h2 className="text-2xl font-bold text-sage-900 mb-4">Tournament Not Found</h2>
           <p className="text-sage-700 mb-6">The tournament you're looking for doesn't exist.</p>
           <button
@@ -97,10 +97,10 @@ export default function TournamentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-olive-100 via-cream to-sage-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-sage-900 via-sage-800 to-olive-900 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Tournament Header */}
-        <div className="bg-cream rounded-2xl shadow-lg p-6 mb-6 border border-sage-200">
+        <div className="bg-cream rounded-2xl shadow-lg p-6 mb-6 ">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 className="text-3xl font-bold text-sage-900 mb-2">{tournament.name}</h1>
@@ -143,7 +143,7 @@ export default function TournamentPage() {
 
               {/* Join Code */}
               {tournament.joinCode && tournament.status !== 'completed' && (
-                <div className="bg-sage-50 border border-sage-300 rounded-lg p-3">
+                <div className="bg-sage-50 rounded-lg p-3">
                   <div className="text-xs text-sage-700 mb-1">Join Code:</div>
                   <div className="flex items-center gap-2">
                     <div className="text-2xl font-bold text-sage-900">{tournament.joinCode}</div>

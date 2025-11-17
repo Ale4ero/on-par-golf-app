@@ -31,7 +31,7 @@ export default function Leaderboard({ tournament }: LeaderboardProps) {
     });
 
     return () => unsubscribe();
-  }, [tournament.id, tournament.players]);
+  }, [tournament.id]);
 
   const filteredLeaderboard = leaderboard.filter(entry => {
     switch (filter) {
@@ -47,7 +47,7 @@ export default function Leaderboard({ tournament }: LeaderboardProps) {
   });
 
   return (
-    <div className="bg-cream rounded-2xl shadow-lg p-6 border border-sage-200">
+    <div className="bg-cream rounded-2xl shadow-lg p-6">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-bold text-sage-900">Leaderboard</h3>
         <div className="flex items-center gap-2">

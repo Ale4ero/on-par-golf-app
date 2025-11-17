@@ -54,7 +54,7 @@ export default function JoinTournamentPage() {
       await addPlayerToTournament(tournament.id, {
         uid: user.uid,
         name: user.name,
-        handicap: user.handicap,
+        ...(user.handicap !== undefined && { handicap: user.handicap }),
         status: 'joined',
       });
 
@@ -68,8 +68,8 @@ export default function JoinTournamentPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-olive-100 via-cream to-sage-100 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-200">
+      <div className="min-h-screen bg-gradient-to-br from-sage-900 via-sage-800 to-olive-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-300">
           <h2 className="text-2xl font-bold text-sage-900 mb-4 text-center">Sign In Required</h2>
           <p className="text-sage-700 mb-6 text-center">
             You must be signed in to join a tournament.
@@ -86,8 +86,8 @@ export default function JoinTournamentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-olive-100 via-cream to-sage-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-200">
+    <div className="min-h-screen bg-gradient-to-br from-sage-900 via-sage-800 to-olive-900 flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-cream rounded-2xl shadow-lg p-8 border border-sage-300">
         <h2 className="text-3xl font-bold text-sage-900 mb-2 text-center">Join Tournament</h2>
         <p className="text-sage-700 mb-6 text-center">
           Enter the tournament code provided by the host

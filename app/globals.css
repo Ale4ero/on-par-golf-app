@@ -1,28 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* --background: #f5f3ed; */
-  --background: #f1f4d8;
-  --foreground: #27282a;
-  --primary: #4e824d;
-  --primary-dark: #4a5a3d;
-  --accent: #c77d4d;
-  --cream: #f1f4d8;
-}
-
-.dark {
-  /* --background: #2d3a2e; */
   --background: #4e824d;
-  --foreground: #f5f3ed;
-  --foreground: #f1f4d8;;
+  --foreground: #f1f4d8;
   --primary: #8ca377;
   --primary-dark: #6b7e5a;
+  --accent: #c77d4d;
+  --cream: #f1f4d8;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Background color utilities */
+.bg-cream {
+  background-color: #f1f4d8;
+  color: #1a221b;
 }
 
 /* Custom golf-themed color utilities */
@@ -45,6 +41,7 @@ body {
 .text-double-bogey {
   color: rgb(184 89 65);
 }
+
 
 .bg-birdie {
   background-color: rgb(220 237 200);

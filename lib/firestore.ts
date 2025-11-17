@@ -79,19 +79,23 @@ export const deleteTournament = async (tournamentId: string): Promise<void> => {
 
 export const getUserTournaments = async (userId: string): Promise<Tournament[]> => {
   try {
-    const q = query(
-      collection(db, 'tournaments'),
-      where('players', 'array-contains', { uid: userId })
-    );
-    const querySnapshot = await getDocs(q);
+    // Get all tournaments and filter on the client side
+    // This is necessary because Firestore array-contains doesn't work well with objects
+    const querySnapshot = await getDocs(collection(db, 'tournaments'));
 
-    return querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data(),
-      startDate: doc.data().startDate.toDate(),
-      createdAt: doc.data().createdAt.toDate(),
-      updatedAt: doc.data().updatedAt.toDate(),
-    })) as Tournament[];
+    const tournaments = querySnapshot.docs
+      .map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        startDate: doc.data().startDate.toDate(),
+        createdAt: doc.data().createdAt.toDate(),
+        updatedAt: doc.data().updatedAt.toDate(),
+      })) as Tournament[];
+
+    // Filter tournaments where user is in players array
+    return tournaments.filter(tournament =>
+      tournament.players.some(player => player.uid === userId)
+    );
   } catch (error: any) {
     throw new Error(`Error fetching user tournaments: ${error.message}`);
   }

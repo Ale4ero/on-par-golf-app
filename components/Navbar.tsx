@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useAuth } from './AuthProvider';
 import { signOut } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
-import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const { user, loading } = useAuth();
@@ -16,16 +15,15 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-sage-900 dark:bg-sage-950 text-cream shadow-md border-b border-sage-800 dark:border-sage-900">
+    <nav className="bg-sage-900 text-cream shadow-md border-b border-sage-800">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold flex items-center gap-2 hover:text-sage-300 dark:hover:text-sage-200 transition">
+          <Link href="/" className="text-2xl font-bold flex items-center gap-2 hover:text-sage-300 transition">
             <span className="text-3xl">⛳</span>
             <span>On Par</span>
           </Link>
 
           <div className="flex items-center gap-6">
-            <ThemeToggle />
             {loading ? (
               <div className="text-sm">Loading...</div>
             ) : user ? (

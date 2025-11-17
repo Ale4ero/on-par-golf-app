@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,7 +16,7 @@ const config: Config = {
           dark: "var(--primary-dark)",
         },
         accent: "var(--accent)",
-        cream: "var(--cream)",
+        cream: "#f1f4d8",
         sage: {
           50: '#f5f7f4',
           100: '#e8ede5',
@@ -26,10 +25,10 @@ const config: Config = {
           400: '#8ca377',
           500: '#6b7e5a',
           600: '#5a6b4a',
-          700: '#4a5a3d',
-          800: '#3d4a32',
-          900: '#2d3a2e',
-          950: '#1a221b',
+          700: '#3d4a32',
+          800: '#2d3a2e',
+          900: '#1a221b',
+          950: '#0d110e',
         },
         olive: {
           50: '#fdfbf4',
