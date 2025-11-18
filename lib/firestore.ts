@@ -166,16 +166,18 @@ export const getPlayerScores = async (
     const q = query(
       collection(db, 'scores'),
       where('tournamentId', '==', tournamentId),
-      where('playerId', '==', playerId),
-      orderBy('hole', 'asc')
+      where('playerId', '==', playerId)
     );
     const querySnapshot = await getDocs(q);
 
-    return querySnapshot.docs.map(doc => ({
+    const scores = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
       timestamp: doc.data().timestamp.toDate(),
     })) as Score[];
+
+    // Sort by hole number on the client side
+    return scores.sort((a, b) => a.hole - b.hole);
   } catch (error: any) {
     throw new Error(`Error fetching player scores: ${error.message}`);
   }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from './AuthProvider';
-import { submitScore, getPlayerScores, getCourse } from '@/lib/firestore';
+import { submitScore, getPlayerScores, getCourse, subscribeTournamentScores } from '@/lib/firestore';
 import { getMockCourse } from '@/lib/mockData';
 import { Course, Score } from '@/lib/types';
 import { getScoreDescription } from '@/utils/calculateScore';
@@ -44,11 +44,34 @@ export default function ScoreCard({
   }, [courseId]);
 
   useEffect(() => {
-    // Load existing scores
-    if (user) {
-      loadScores();
-    }
-  }, [user, tournamentId]);
+    // Subscribe to real-time score updates
+    if (!user) return;
+
+    console.log('Setting up score listener for tournament:', tournamentId, 'user:', user.uid);
+
+    const unsubscribe = subscribeTournamentScores(tournamentId, (allScores) => {
+      console.log('Received scores update, total scores:', allScores.length);
+
+      // Filter to only this player's scores
+      const playerScores = allScores.filter(s => s.playerId === user.uid);
+      console.log('Player scores:', playerScores.length, playerScores);
+
+      setScores(playerScores);
+
+      // Set current hole to the next unscored hole
+      const completedHoles = playerScores.map(s => s.hole);
+      const nextHole = Array.from({ length: totalHoles }, (_, i) => i + 1)
+        .find(h => !completedHoles.includes(h));
+
+      console.log('Completed holes:', completedHoles, 'Next hole:', nextHole);
+
+      if (nextHole) {
+        setCurrentHole(nextHole);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [user, tournamentId, totalHoles]);
 
   const loadScores = async () => {
     if (!user) return;
@@ -92,6 +115,15 @@ export default function ScoreCard({
         throw new Error('Invalid hole');
       }
 
+      console.log('Submitting score:', {
+        tournamentId,
+        playerId: user.uid,
+        playerName: user.name,
+        hole: currentHole,
+        strokes,
+        par: holeData.par,
+      });
+
       await submitScore({
         tournamentId,
         playerId: user.uid,
@@ -101,21 +133,19 @@ export default function ScoreCard({
         par: holeData.par,
       });
 
-      // Reload scores
+      console.log('Score submitted successfully');
+
+      // Manually reload scores to ensure UI updates immediately
       await loadScores();
 
       // Reset for next hole
       setStrokes(0);
 
-      // Move to next hole if not at the end
-      if (currentHole < totalHoles) {
-        setCurrentHole(currentHole + 1);
-      }
-
       if (onScoreSubmitted) {
         onScoreSubmitted();
       }
     } catch (err: any) {
+      console.error('Error submitting score:', err);
       setError(err.message || 'Failed to submit score');
     } finally {
       setLoading(false);
