@@ -77,6 +77,23 @@ export const deleteTournament = async (tournamentId: string): Promise<void> => {
   }
 };
 
+export const getAllTournaments = async (): Promise<Tournament[]> => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'tournaments'));
+
+    return querySnapshot.docs
+      .map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        startDate: doc.data().startDate.toDate(),
+        createdAt: doc.data().createdAt.toDate(),
+        updatedAt: doc.data().updatedAt.toDate(),
+      })) as Tournament[];
+  } catch (error: any) {
+    throw new Error(`Error fetching all tournaments: ${error.message}`);
+  }
+};
+
 export const getUserTournaments = async (userId: string): Promise<Tournament[]> => {
   try {
     // Get all tournaments and filter on the client side

@@ -5,8 +5,8 @@
   --foreground: #f1f4d8;
   --primary: #8ca377;
   --primary-dark: #6b7e5a;
-  --accent: #c77d4d;
-  --cream: #f1f4d8;
+  --accent: #FC8B2D;
+  --cream: #F2F5DA
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 
 /* Background color utilities */
 .bg-cream {
-  background-color: #f1f4d8;
+  background-color: #F2F5DA;
   color: #1a221b;
 }
 
